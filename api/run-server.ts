@@ -1,6 +1,6 @@
 import { NowRequest, NowResponse } from '@now/node';
 
-const { ApolloServer } = require('apollo-server');
+import { ApolloServer } from 'apollo-server-lambda';
 const snippetsSchema = require('../schema/snippets');
 const snippetResolver = require('../resolvers/snippets');
 
@@ -55,6 +55,7 @@ module.exports = apolloServer.createHandler({
   },
   path: '/api'
 });
+
 
 // export default (req: NowRequest, res: NowResponse) => {
 //     try {
