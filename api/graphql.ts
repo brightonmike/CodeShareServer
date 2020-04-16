@@ -1,6 +1,6 @@
 import { NowRequest, NowResponse } from '@now/node';
 
-import { ApolloServer } from 'apollo-server';
+import { ApolloServer } from 'apollo-server-micro';
 const snippetsSchema = require('../schema/snippets');
 const snippetResolver = require('../resolvers/snippets');
 
