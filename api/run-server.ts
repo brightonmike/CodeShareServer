@@ -1,8 +1,8 @@
 import { NowRequest, NowResponse } from '@now/node';
 
 const { ApolloServer } = require('apollo-server');
-const snippetsSchema = require('./schema/snippets');
-const snippetResolver = require('./resolvers/snippets');
+const snippetsSchema = require('../schema/snippets');
+const snippetResolver = require('../resolvers/snippets');
 
 const jwt = require('jsonwebtoken');
 const jwksClient = require('jwks-rsa');
