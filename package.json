@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "node index.js"
+    "serve": "node index.js",
+    "start": "nodemon index.js"
   },
   "dependencies": {
     "apollo-cache-inmemory": "^1.6.5",
@@ -18,7 +19,8 @@
     "isomorphic-unfetch": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
     "jwks-rsa": "^1.7.0",
-    "mongodb": "^3.5.5"
+    "mongodb": "^3.5.5",
+    "nodemon": "^1.17.5"
   },
   "devDependencies": {
     "@types/node": "^13.9.1",
