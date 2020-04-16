@@ -53,7 +53,6 @@ module.exports = apolloServer.createHandler({
     origin: '*',
     credentials: true,
   },
-  path: '/api'
 });
 
 
