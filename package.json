@@ -1,0 +1,28 @@
+{
+  "name": "genecodeshare",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "node index.js"
+  },
+  "dependencies": {
+    "apollo-cache-inmemory": "^1.6.5",
+    "apollo-client": "^2.6.8",
+    "apollo-link-http": "^1.5.16",
+    "apollo-server": "^2.11.0",
+    "apollo-server-micro": "^2.11.0",
+    "dotenv": "^8.2.0",
+    "graphql": "^14.6.0",
+    "graphql-tag": "^2.10.3",
+    "highlight.js": "^9.18.1",
+    "isomorphic-unfetch": "^3.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "jwks-rsa": "^1.7.0",
+    "mongodb": "^3.5.5"
+  },
+  "devDependencies": {
+    "@types/node": "^13.9.1",
+    "@types/react": "^16.9.23",
+    "typescript": "^3.8.3"
+  }
+}
