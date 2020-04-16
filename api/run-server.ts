@@ -48,14 +48,25 @@ const apolloServer = new ApolloServer({
   },
 });
 
-export default (req: NowRequest, res: NowResponse) => {
-    try {
-        apolloServer.listen().then(({ url, server }) => {
-            console.log(`🚀  Server ready at ${url}`);
-        }).catch(error => {
-            console.log(`🥵 Error: ${error}`);  
-        });
-    } catch (err) {
-        console.log(`🥵 Error: ${err}`);  
-    }
-}
+module.exports = apolloServer.createHandler({
+  cors: {
+    origin: '*',
+    credentials: true,
+  },
+  path: '/api'
+});
+
+// export default (req: NowRequest, res: NowResponse) => {
+//     try {
+//         apolloServer.listen().then(({ url, server }) => {
+//             console.log(`🚀  Server ready at ${url}`);
+//             res.send(`🚀  Server ready at ${url}`);
+//         }).catch(error => {
+//             console.log(`🥵 Error: ${error}`);  
+//             res.send(`🥵 Error: ${error}`);
+//         });
+//     } catch (err) {
+//         console.log(`🥵 Error: ${err}`);  
+//         res.send(`🥵 Error: ${err}`);
+//     }
+// }
