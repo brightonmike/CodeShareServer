@@ -1,6 +1,6 @@
 import { NowRequest, NowResponse } from '@now/node';
 
-import { ApolloServer } from 'apollo-server-lambda';
+import { ApolloServer } from 'apollo-server';
 const snippetsSchema = require('../schema/snippets');
 const snippetResolver = require('../resolvers/snippets');
 
@@ -48,25 +48,18 @@ const apolloServer = new ApolloServer({
   },
 });
 
-module.exports = apolloServer.createHandler({
-  cors: {
-    origin: '*',
-    credentials: true,
+export const config = {
+  api: {
+    bodyParser: false,
   },
-});
+};
 
-
-// export default (req: NowRequest, res: NowResponse) => {
-//     try {
-//         apolloServer.listen().then(({ url, server }) => {
-//             console.log(`🚀  Server ready at ${url}`);
-//             res.send(`🚀  Server ready at ${url}`);
-//         }).catch(error => {
-//             console.log(`🥵 Error: ${error}`);  
-//             res.send(`🥵 Error: ${error}`);
-//         });
-//     } catch (err) {
-//         console.log(`🥵 Error: ${err}`);  
-//         res.send(`🥵 Error: ${err}`);
-//     }
-// }
+const handler = apolloServer.createHandler({ path: "/api/graphql" }); 
+ 
+export default async (req, res) => {
+  if (req.method === 'OPTIONS') {
+    return res.status(200).send();
+  } else {
+    return handler(req, res);
+  }
+};
