@@ -2,7 +2,7 @@ const { gql } = require('apollo-server');
 
 const snippetsSchema = gql`
     type Query {
-        getSnippets: [Snippet]
+        getSnippets(filters: [String]): [Snippet]
         getSnippet(id: String!): Snippet
     }
 

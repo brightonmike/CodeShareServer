@@ -6,10 +6,19 @@ const addSnippet = require('../model/add-snippet');
 
 const snippetResolver = {
   Query: {
-    getSnippets: async (_, { user }) => {
+    getSnippets: async (_, { filters, user }) => {
       try {
         const email = await user; // catching the reject from the user promise.
+
+        if (filters && filters.length > 0) {
+          const snippets = await getSnippets();
+          return snippets.filter(snippet => {
+            return snippet.languages.some(language => filters.includes(language));
+          });
+        }
+
         return getSnippets();
+
       } catch(e) {
         throw new AuthenticationError('You must be logged in to do this');
       }
