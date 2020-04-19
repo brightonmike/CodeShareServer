@@ -46,8 +46,10 @@ const apolloServer = new ApolloServer({
   },
 });
 
+const PORT = process.env.PORT || 3000;
+
 try {
-    apolloServer.listen().then(({ url, server }) => {
+    apolloServer.listen(PORT).then(({ url, server }) => {
         console.log(`🚀  Server ready at ${url}`);
     }).catch(error => {
         console.log(`🥵 Error: ${error}`);  
