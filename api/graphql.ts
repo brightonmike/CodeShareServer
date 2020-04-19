@@ -3,6 +3,7 @@ import { NowRequest, NowResponse } from '@now/node';
 import { ApolloServer } from 'apollo-server-micro';
 const snippetsSchema = require('../schema/snippets');
 const snippetResolver = require('../resolvers/snippets');
+const cors = require('micro-cors')();
 
 const jwt = require('jsonwebtoken');
 const jwksClient = require('jwks-rsa');
@@ -56,10 +57,10 @@ export const config = {
 
 const handler = apolloServer.createHandler({ path: "/api/graphql" }); 
  
-export default async (req, res) => {
+export default cors((req, res) => {
   if (req.method === 'OPTIONS') {
     return res.status(200).send();
   } else {
     return handler(req, res);
   }
-};
+});
