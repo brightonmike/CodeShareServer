@@ -11,7 +11,7 @@ const snippetsSchema = gql`
     type Mutation {
         addSnippet(snippet: NewSnippet): AddSnippetResponse
         editSnippet(snippet: NewSnippet): AddSnippetResponse
-        deleteSnippet(snippet: NewSnippet): AddSnippetResponse
+        deleteSnippet(snippetId: String!): DeleteSnippetResponse
         addGroup(group: NewGroup): NewGroupResponse
     }
 
@@ -27,6 +27,11 @@ const snippetsSchema = gql`
         versions: [String]
         types: [String]
         _id: String!
+    }
+
+    type DeleteSnippetResponse {
+      success: Boolean!
+      message: String
     }
 
     input NewSnippet {

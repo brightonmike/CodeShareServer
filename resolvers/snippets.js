@@ -3,6 +3,7 @@ const { AuthenticationError } = require('apollo-server');
 const getSnippets = require('../model/get-snippets');
 const getSnippet = require('../model/get-snippet');
 const addSnippet = require('../model/add-snippet');
+const deleteSnippet = require('../model/delete-snippet');
 
 const getGroups = require('../model/get-groups');
 const getGroup = require('../model/get-group');
@@ -66,6 +67,14 @@ const snippetResolver = {
       try {
         const email = await user; // catching the reject from the user promise.
         return addGroup(group);
+      } catch(e) {
+        throw new AuthenticationError('You must be logged in to do this');
+      }
+    },
+    deleteSnippet: async (_, { snippetId, user }) => {
+      try {
+        const email = await user; // catching the reject from the user promise.
+        return deleteSnippet(snippetId);
       } catch(e) {
         throw new AuthenticationError('You must be logged in to do this');
       }
